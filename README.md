@@ -130,6 +130,16 @@ Steps:
  6. Select *Services* in the left column and scroll down to find "YubiGoog", click on it.
  7. Click on *Add Shorcut* now press `Cmd+Y` or any other keyboard shortcut you prefer.
 
+Note: I use Tunnelblick which runs weirdly and crashes every time I try to create a service, so I did the following work around.
+ 1. When creating service mark as "no input", that means service can be triggered anywhere.
+ 2. Add the script to grab the key and paste into clipboard
+```
+YUBI_GOOG_DIR=~/q/yubi-goog; $YUBI_GOOG_DIR/env/bin/python $YUBI_GOOG_DIR/yubi_goog.py yubi| tr -d "\n"| pbcopy
+
+```
+ 3. Create keyboard shortcut to trigger the service, after that Cmd+V into tunnelblick
+ 
+
 You should now be able to get 2FA tokens by pressing `Cmd+Y`.
 
 
