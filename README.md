@@ -32,24 +32,15 @@ You will need to setup your Yubikey with the Yubikey personalisation tool, you c
 
 We recommend you create a "virtualenv" to prevent the dependencies from cluttering your system.
 
-If you haven't already, install `virtualenv` and `pip`. Optionally you can install `git` but if you don't want to, you can download the zipped source code directly [zip](https://github.com/greenhost/yubi-goog/archive/master.zip) and unzip it (the commands below assume you will use git).
+If you haven't already, install `virtualenv` and `pip`. Optionally you can install `git` but if you don't want to, you can download the zipped source code directly [zip](https://github.com/sshkel/yubi-goog/archive/master.zip) and unzip it (the commands below assume you will use git).
 
 ### On Debian/Ubuntu
 
 ``` console
-$ sudo apt-get install git-all python-setuptools virtualenv
-$ git clone https://github.com/greenhost/yubi-goog ./
-$ cd yubi-goog
-$ virtualenv ./env
-$ source ./env/bin/activate
-$ pip install -r requirements.txt
-```
-
-### On Fedora/CentOS/Redhat
-
-``` console
-$ sudo yum install git-all python-pip python-virtualenv
-$ git clone https://github.com/greenhost/yubi-goog ./
+$ sudo add-apt-repository ppa:yubico/stable
+$ sudo apt update
+$ sudo apt-get install yubikey-personalization
+$ git clone https://github.com/sshkel/yubi-goog.git
 $ cd yubi-goog
 $ virtualenv ./env
 $ source ./env/bin/activate
@@ -64,11 +55,10 @@ Installing dependencies using homebrew:
 
 ```console
 $ brew install git python ykpers
-$ git clone https://github.com/greenhost/yubi-goog ./
+$ git clone https://github.com/sshkel/yubi-goog.git
 $ cd yubi-goog
 $ virtualenv ./env
 $ source ./env/bin/activate
-$ pip install pyobjc-core 
 $ pip install pyobjc 
 $ pip install -r requirements.txt
 ```
@@ -116,10 +106,14 @@ The command you enter into the shortcut should contain the full path to the pyth
 ```
 [PATH TO YOUR yubi-goog DIR]/env/bin/python [PATH TO YOUR yubi-goog DIR]/yubi_goog.py hid --return
 ```
+I simply created custom shortcut in the keyboard menu and added the following as the script to run
+```
+bash -c "YUBI_GOOG_DIR=[PATH TO YOUR yubi-goog DIR]/; $YUBI_GOOG_DIR/env/bin/python $YUBI_GOOG_DIR/yubi_goog.py hid --return"
+```
 
 #### macOS
 
-If you are running this on macOS there is no easy way of running the command simply by a short-cut. Instead you need to create an Automator Service that runs the command.
+If you are running this on macOS there is no easy way of running the command simply by a short-cut. Instead you need to create an Automator Service that runs the command. 
 
 Steps:
 

@@ -91,6 +91,7 @@ def _gen_token(yubi_slot, digits):
         if exc.errno == 13:
             print("Can't access your Yubikey, permission denied.")
             if platform.system() == 'Linux':
+
                 print(INSTRUCTIONS['en']['usb_error_udev'])
             else:
                 print(exc)
@@ -108,7 +109,7 @@ def _gen_token(yubi_slot, digits):
         digits,
         yubico.yubico_util.hotp_truncate(response, length=digits)
     )
-
+    return token
 
 def ytg_yubi(yubi_slot=1, digits=6, emulate_keyboard=False,
              emulate_return=False, emulate_speed=0.05):

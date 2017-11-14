@@ -10,7 +10,7 @@ INSTRUCTIONS = {
                     'Program it into one of the Yubikey\'s slots by using the'
                     'Yubikey personalisation tool. Select the HOTP option.'
                 ),
-        'generate': 'Your generated TOTP token: \033[01;32m{}\033[0m',
+        'generate': '{}',
         'short_secret': (
                         'Your secret needs to be 20 characters long for this'
                         'to work (160 bit secret).'
